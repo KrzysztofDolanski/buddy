@@ -1,12 +1,9 @@
 package dol.buddy.addicted;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController(value = "")
 @AllArgsConstructor
 public class BuddyController {
 
@@ -22,5 +19,8 @@ public class BuddyController {
         service.save(buddy);
     }
 
-
+    @GetMapping(value = "/{name}")
+    String getBuddy(@PathVariable("name") String name){
+        return service.getBuddyByName(name).get(0).getName();
+    }
 }
