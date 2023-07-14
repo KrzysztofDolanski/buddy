@@ -1,5 +1,6 @@
 package dol.buddy.addicted;
 
+import dol.buddy.People;
 import dol.buddy.player.Player;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import javax.persistence.*;
 @Table(name = "buddy")
 @AllArgsConstructor
 @RequiredArgsConstructor
-public final class Buddy {
+public final class Buddy implements People {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package dol.buddy.addicted;
 
+import dol.buddy.People;
 import dol.buddy.player.PlayerController;
 import dol.buddy.player.PlayerRepository;
 import dol.buddy.world.WorldService;
@@ -16,6 +17,10 @@ public class BuddyService {
     private final PlayerRepository playerRepository;
     private final WorldService worldService;
     private final double DAY = 1;
+
+    public List<Buddy> getAllBuddies() {
+        return buddyRepository.findAll();
+    }
 
     protected void update(Buddy buddy) {
         buddyRepository.updateMood(buddy.getId(), buddy.getMood());
