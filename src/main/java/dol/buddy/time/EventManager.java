@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
+@Component
 public class EventManager {
 
-    Map<String, List<EventListener>> listeners = new HashMap<>();
+    private Map<String, List<EventListener>> listeners = new HashMap<>();
 
+    @Autowired
     public EventManager(String... operations) {
         for (String operation : operations) {
-            this.listeners.put(operation, new ArrayList<>());
+            listeners.put(operation, new ArrayList<>());
         }
     }
 
@@ -25,10 +32,15 @@ public class EventManager {
         users.remove(listener);
     }
 
-    public void notify(String eventType, Map<String, String> file) {
+    public EventEntity notifyProducers(String eventType, Map<String, String> file) {
         List<EventListener> users = listeners.get(eventType);
         for (EventListener listener : users) {
             listener.update(eventType, file);
         }
+        return new EventEntity(eventType, file);
+    }
+
+    public Map<String, List<EventListener>> getListeners() {
+        return listeners;
     }
 }

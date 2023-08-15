@@ -2,7 +2,11 @@ package dol.buddy.time;
 
 import dol.buddy.forecast.Sun;
 import java.util.Map;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class EventsProducer {
 
     private static final String FORECAST = "forecast";
@@ -10,13 +14,17 @@ public class EventsProducer {
     private static final String SUN = "sun";
     private static final String TEMPERATURE = "temperature";
 
-    private final Map<String, String> ordinaryDayEvents = Map.ofEntries(
+    private static final Map<String, String> ordinaryDayEvents = Map.ofEntries(
             Map.entry(WATER, "100"),
             Map.entry(SUN, Sun.MEDIUM.name()),
             Map.entry(TEMPERATURE, "18"));
 
     protected String getEventValue(String event) {
         return ordinaryDayEvents.get(event);
+    }
+
+    public static Map<String, String> getOrdinaryDayEvents() {
+        return ordinaryDayEvents;
     }
 
     protected String getWater() {

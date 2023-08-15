@@ -11,8 +11,6 @@ public class BuddyApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BuddyApplication.class, args);
-        TimeEngine timeEngine = new TimeEngine();
-        timeEngine.beepForAnHour();
     }
 
 }

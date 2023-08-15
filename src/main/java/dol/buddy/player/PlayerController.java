@@ -1,7 +1,9 @@
 package dol.buddy.player;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +27,18 @@ public class PlayerController {
     }
 
     @PostMapping(value = "{playerName}")
-    public void createPlayer(@PathVariable("playerName") String playerName) {
-        playerService.createPlayer(playerName);
+    public ResponseEntity createPlayer(@PathVariable("playerName") String playerName) {
+        return playerService.createPlayer(playerName);
+    }
+
+    @PostMapping("/addplayer")
+    public void addPlayer(@ModelAttribute Player player) {
+        playerService.createPlayer(player.getName());
+    }
+
+    @GetMapping("/player")
+    public ResponseEntity<Player> showFirstPlayer() {
+        return ResponseEntity.of(playerService.findAll().stream().findFirst());
     }
 
 }
