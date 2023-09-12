@@ -7,7 +7,6 @@ import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Component
@@ -17,6 +16,10 @@ public class EventManager {
 
     @Autowired
     public EventManager(String... operations) {
+        if (operations.length<1){
+            listeners.put("day", new ArrayList<>());
+            listeners.put("night", new ArrayList<>());
+        }
         for (String operation : operations) {
             listeners.put(operation, new ArrayList<>());
         }
