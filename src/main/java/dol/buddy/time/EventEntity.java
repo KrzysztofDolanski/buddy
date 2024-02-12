@@ -10,9 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public final class EventEntity {
 
     @Id
@@ -29,4 +33,5 @@ public final class EventEntity {
             eventsList.add(new Eventums(key, data.get(key)));
         }
     }
+
 }

@@ -12,7 +12,7 @@ export default class Contacts extends Component {
 
 //todo tudaj zmienić na np new player
     componentDidMount() {
-        fetch('http://localhost:8080/api/contacts')
+        fetch('http://localhost:8081/addplayer')
         .then(response => response.json())
         .then(data => this.setState({contacts : data}))
         }

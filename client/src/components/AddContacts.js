@@ -28,12 +28,12 @@ export default class AddContacts extends Component {
     <form className="col s12" onSubmit={this.submitContact.bind(this)}>
       <div className="row">
         <div className="input-field col s6">
-            <input placeholder="Placeholder" ref="first_name" type="text" className="validate" />
-          <label htmlFor="first_name">First Name</label>
+            <input placeholder="Placeholder" ref="firstName" type="text" className="validate" />
+          <label htmlFor="firstName">First Name</label>
         </div>
         <div className="input-field col s6">
-          <input ref="last_name" type="text" className="validate" />
-          <label htmlFor="last_name">Last Name</label>
+          <input ref="lastName" type="text" className="validate" />
+          <label htmlFor="lastName">Last Name</label>
         </div>
       </div>
 
