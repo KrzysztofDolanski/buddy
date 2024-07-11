@@ -16,6 +16,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class TimeEngine {
 
     private Object lock = new Object();
+
     Logger log = LoggerFactory.getLogger(TimeEngine.class.getSimpleName());
     private final EventManager manager;
     private final ScheduledExecutorService scheduler =
@@ -45,4 +46,5 @@ public class TimeEngine {
             manager.subscribe("day", new TreeListener());
             return manager.notifyProducers("day", ordinaryDayEvents);
         }
+
 }

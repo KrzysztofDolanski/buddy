@@ -1,13 +1,29 @@
 package dol.buddy.addicted;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
-@AllArgsConstructor
-public class BuddySoul {
+import java.io.Serializable;
+import java.util.UUID;
 
-    private BuddyService service;
+@Component
+public class BuddySoul implements Serializable {
+
+    private UUID uuid = UUID.randomUUID();
+    private String name = "Buddy soul";
+
+    private final transient BuddyService service;
+
+    public BuddySoul(BuddyService service) {
+        this.service = service;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     boolean canHeLive(Buddy buddy) {
         return buddy.isAlive() && buddy.getMood() > -100.0;
@@ -15,14 +31,9 @@ public class BuddySoul {
 
     void rest(Buddy buddy) {
         service.update(
-        Buddy.builder()
-                .id(buddy.getId())
-                .name(buddy.getName())
-                .age(buddy.getAge())
-                .mood(buddy.getMood())
-                .alive(buddy.isAlive())
-                .money(buddy.getMoney())
-                .build()
-        );
+                new Buddy.BuddyBuilder()
+                        .withId(buddy.getId())
+                        .withMood(buddy.getMood())
+                        .build());
     }
 }

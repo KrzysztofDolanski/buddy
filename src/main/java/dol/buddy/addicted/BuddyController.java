@@ -3,7 +3,7 @@ package dol.buddy.addicted;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "")
+@RestController(value = "/buddy")
 @AllArgsConstructor
 public class BuddyController {
 
