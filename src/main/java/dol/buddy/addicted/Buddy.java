@@ -2,7 +2,9 @@ package dol.buddy.addicted;
 
 import dol.buddy.People;
 import dol.buddy.player.Player;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +17,8 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "buddy")
+@AllArgsConstructor
+@NoArgsConstructor
 public final class Buddy implements People, Serializable {
 
     private Buddy(BuddyBuilder buddyBuilder) {

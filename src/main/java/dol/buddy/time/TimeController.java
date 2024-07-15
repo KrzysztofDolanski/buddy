@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TimeController {
 
     private final EventService service;
+    private final EventsProducer eventsProducer;
 
     @GetMapping("/day")
     public void day(){
-        TimeEngine timeEngine = new TimeEngine();
+        TimeEngine timeEngine = new TimeEngine(eventsProducer);
         service.saveEvent(timeEngine.beepForAnHour());
     }
 }

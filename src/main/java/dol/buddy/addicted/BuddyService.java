@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -42,7 +43,8 @@ public class BuddyService {
         double age = buddy.getAge() + DAY;
     }
 
-    List<Buddy> getBuddyByName(String name){
-        return buddyRepository.findByName(name);
+    Optional<List<Buddy>> getBuddyByName(String name){
+        List<Buddy> byName = buddyRepository.findByName(name);
+        return Optional.ofNullable(byName);
     }
 }

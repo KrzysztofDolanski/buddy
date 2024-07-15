@@ -23,7 +23,7 @@ public class EventsProducer {
         return ordinaryDayEvents.get(event);
     }
 
-    public static Map<String, String> getOrdinaryDayEvents() {
+    public Map<String, String> getOrdinaryDayEvents() {
         return ordinaryDayEvents;
     }
 
