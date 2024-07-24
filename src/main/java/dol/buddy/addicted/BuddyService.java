@@ -1,14 +1,11 @@
 package dol.buddy.addicted;
 
-import dol.buddy.People;
-import dol.buddy.player.PlayerController;
 import dol.buddy.player.PlayerRepository;
 import dol.buddy.world.WorldService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -43,8 +40,10 @@ public class BuddyService {
         double age = buddy.getAge() + DAY;
     }
 
+    @VerifyReturnType
     Optional<List<Buddy>> getBuddyByName(String name){
         List<Buddy> byName = buddyRepository.findByName(name);
         return Optional.ofNullable(byName);
     }
+
 }

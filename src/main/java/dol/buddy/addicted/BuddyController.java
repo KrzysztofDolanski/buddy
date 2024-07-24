@@ -3,8 +3,8 @@ package dol.buddy.addicted;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 @RestController(value = "/buddy")
 @AllArgsConstructor
@@ -26,4 +26,5 @@ public class BuddyController {
     List<Buddy> getBuddy(@PathVariable("name") String name){
         return service.getBuddyByName(name).orElseGet(List::of);
     }
+
 }

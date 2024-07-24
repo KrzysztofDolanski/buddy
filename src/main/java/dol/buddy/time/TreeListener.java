@@ -5,9 +5,7 @@ import dol.buddy.forecast.Temperature;
 import dol.buddy.forecast.Water;
 import lombok.Getter;
 import lombok.ToString;
-import net.bytebuddy.utility.RandomString;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;

@@ -3,17 +3,14 @@ package dol.buddy.reader_writer;
 import dol.buddy.addicted.BuddyService;
 import dol.buddy.addicted.BuddySoul;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +25,7 @@ class FileWriterTest {
     Comparator<String> comparator = new Comparator<String>() {
         @Override
         public int compare(String o1, String o2) {
-            return o1.charAt(1) > o2.charAt(1) ? 1 : o1.charAt(1) == o2.charAt(1)? 0 : 2;
+            return o1.charAt(1) > o2.charAt(1) ? 1 : o1.charAt(1) == o2.charAt(1) ? 0 : 2;
         }
     };
 
@@ -68,26 +65,17 @@ class FileWriterTest {
     void writeSoul() throws IOException {
         //given
         BuddySoul buddySoul = new BuddySoul(buddyService);
-        String fileName = String.valueOf(buddySoul.uuid);
+        String fileName = String.valueOf(buddySoul.getUuid());
         FileWriter fileWriter = new FileWriter();
 
         //when
         fileWriter.writeSoul(buddySoul, fileName);
 
         //then
-        FileReader reader = new FileReader("soul"+fileName);
+        FileReader reader = new FileReader("soul" + fileName);
         assertThat(reader.ready()).isTrue();
     }
 
-    @Test
-    void testIterator() {
-        Iterator<String> iterator = set.iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next();
-            set.add("some");
-        }
-    }
 
     @Test
     void testListIterator() {

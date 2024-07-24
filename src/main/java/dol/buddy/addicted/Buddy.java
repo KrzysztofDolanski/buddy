@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Table(name = "buddy")
 @AllArgsConstructor
 @NoArgsConstructor
-public final class Buddy implements People, Serializable {
+public final class Buddy implements People, Serializable, BuddyName {
 
     private Buddy(BuddyBuilder buddyBuilder) {
         this.player = buddyBuilder.player;
@@ -41,6 +41,11 @@ public final class Buddy implements People, Serializable {
     private double money;
     @ManyToOne
     private Player player;
+
+    @Override
+    public String getDefaultName() {
+        return "Marek";
+    }
 
     public static class BuddyBuilder {
         private Long id;
